@@ -83,6 +83,22 @@ public class MainActivityTest {
 
     }
 
+    @Test
+    public void showEditTextErrorName() {
+        // now write in edit text
+        onView(withId(R.id.editTextName)).perform(typeText(""));
+
+        delay(500);
+
+        // now press b Button
+
+        onView(withId(R.id.buttonSubmit)).perform(click());
+
+        // now check toast is properly showing or not
+        onView(withText("Name Cannot be empty")).inRoot(withDecorView(not(is(activityRule.getActivity().getWindow().getDecorView())))).check(matches(isDisplayed()));
+
+    }
+
     private void delay(long item) {
         try {
             Thread.sleep(item);
