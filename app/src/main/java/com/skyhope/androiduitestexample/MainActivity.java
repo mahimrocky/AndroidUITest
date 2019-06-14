@@ -2,9 +2,11 @@ package com.skyhope.androiduitestexample;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -60,6 +62,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Toast.makeText(this, editTextName.getText().toString().trim(), Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "Name Cannot be empty", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public boolean isValidName(String text) {
+        if (TextUtils.isEmpty(text)) {
+            return false;
+        } else {
+            return true;
         }
     }
 }
