@@ -66,10 +66,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public boolean isValidName(String text) {
-        if (TextUtils.isEmpty(text)) {
-            return false;
-        } else {
-            return true;
-        }
+        return !TextUtils.isEmpty(text);
     }
 }

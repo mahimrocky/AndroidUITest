@@ -10,6 +10,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -26,17 +27,15 @@ import static org.mockito.Mockito.when;
  *  * Last Reviewed by : <Reviewer Name> on <mm/dd/yy>
  *  ****************************************************************************
  */
-@RunWith(MockitoJUnitRunner.class)
 public class MainActivityTest {
-
 
     @Test
     public void sampleTest() {
         MainActivity activity = Mockito.mock(MainActivity.class);
 
-        boolean value = activity.isValidName("Hello");
+        Mockito.doReturn(true).when(activity).isValidName("Hello");
 
-        verify(activity).isValidName("Hello");
+        assertTrue(activity.isValidName("Hello"));
 
     }
 }
