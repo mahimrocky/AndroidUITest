@@ -65,7 +65,7 @@ tasks.withType(Test) {
     jacoco.includeNoLocationClasses = true
 }
 
-task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'createDebugCoverageReport']) {
+task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest','connectedAndroidTest']) {
 
     reports {
         xml.enabled = true
@@ -74,11 +74,10 @@ task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'crea
 
     // The lines below make sure we can report against Kotlin and exclude some Android Stuff
     def fileFilter = [
-            '**/*Activity.class',
             '**/R.class', '**/R$*.class', '**/BuildConfig.*', '**/Manifest*.*',
             '**/*Test*.*', 'android/**/*.*'
     ]
-    def debugTree = fileTree(dir: "$project.buildDir/tmp/kotlin-classes/debug", excludes: fileFilter)
+    def debugTree = fileTree(dir: "$project.buildDir/intermediates/javac/debug/compileDebugJavaWithJavac/classes/", excludes: fileFilter)
     def mainSrc = "$project.projectDir/src/main/java"
 
     sourceDirectories = files([mainSrc])
