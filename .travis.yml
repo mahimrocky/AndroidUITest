@@ -46,4 +46,4 @@ after_failure:
   - for file in *.log; do echo "$file"; echo "====================="; cat "$file"; done || true
 
 after_success:
-  - ./gradlew report coveralls
+  - ./gradlew jacocoRootReport  coveralls
